@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: safal00/DiaryNepalTest/DiaryNepalTest  # change this
+  repo: safal00/DiaryNepalTest  # change this
   branch: main
 
 media_folder: "assets/images"
