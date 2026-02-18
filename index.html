@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diary Nepal - Home</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YQQHMEQWT4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YQQHMEQWT4');
+</script>
+
+<style>
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f6f9;
+    color: #333;
+  }
+
+  header {
+    background: #004aad;
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 2.3em;
+  }
+
+  header p {
+    margin-top: 8px;
+    opacity: 0.95;
+  }
+
+  /* Layout */
+  .layout {
+    display: flex;
+    max-width: 1300px;
+    margin: auto;
+    padding: 30px 20px;
+    gap: 30px;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    width: 300px;
+    min-width: 260px;
+  }
+
+  .directory-card {
+    background: white;
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    font-weight: 600;
+    color: #004aad;
+  }
+
+  .directory-card:hover {
+    background: #f0f5ff;
+    transform: translateX(5px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  }
+
+  /* Main content */
+  .content {
+    flex: 1;
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  }
+
+  .content h2 {
+    color: #004aad;
+    margin-top: 0;
+  }
+
+  /* Footer */
+  footer {
+    background: #1e1e1e;
+    color: #ccc;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+  }
+
+  footer a {
+    color: #004aad;
+    text-decoration: underline;
+    font-weight: bold;
+    margin-left: 5px;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .layout {
+      flex-direction: column;
+    }
+
+    .sidebar {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .directory-card {
+      margin-bottom: 0;
+      text-align: center;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Diary Nepal</h1>
+  <p>Select a directory from the left</p>
+</header>
+
+<div class="layout">
+
+  <!-- Left Directory -->
+  <aside class="sidebar">
+    <div class="directory-card" onclick="location.href='Bloodbank.html'">Blood Bank</div>
+    <div class="directory-card" onclick="location.href='Ambulance.html'">Ambulance</div>
+    <div class="directory-card" onclick="location.href='Red Cross.html'">Red Cross</div>
+    <div class="directory-card" onclick="location.href='Hospital.html'">Hospital</div>
+    <div class="directory-card" onclick="location.href='municipality_offices.html'">Municipality Offices</div>
+    <div class="directory-card" onclick="location.href='Government Institution.html'">Government Institution</div>
+    <div class="directory-card" onclick="location.href='Financial Institution.html'">Financial Institution</div>
+    <div class="directory-card" onclick="location.href='police.html'">Police</div>
+    <div class="directory-card" onclick="location.href='Health Care.html'">Health Care</div>
+    <div class="directory-card" onclick="location.href='Travel Agency.html'">Travel Agency</div>
+    <div class="directory-card" onclick="location.href='Airlines.html'">Airlines</div>
+    <div class="directory-card" onclick="location.href='School.html'">Schools</div>
+    <div class="directory-card" onclick="location.href='Broker Office.html'">Broker Office</div>
+    <div class="directory-card" onclick="location.href='vat-calculator.html'">VAT Calculator</div>
+  </aside>
+
+  <!-- Main Content -->
+ <main class="content">
+  <div id="main-content"></div>
+</main>
+
+
+</div>
+
+<footer>
+  © 2025 Diary Nepal | Data from official sources
+  <p>
+    Have a question or notice incorrect data? 
+    <a href="feedback.html" target="_blank">Submit Feedback</a>
+  </p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<script>
+fetch('content/home.md')
+  .then(response => response.text())
+  .then(text => {
+    const body = text.split('---')[2];
+    document.getElementById('main-content').innerHTML = marked.parse(body);
+  });
+</script>
+
+</body>
+</html>
